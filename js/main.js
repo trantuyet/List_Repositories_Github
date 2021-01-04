@@ -1,14 +1,11 @@
-// Create a request variable and assign a new XMLHttpRequest object to it.
-var request = new XMLHttpRequest()
+let request = new XMLHttpRequest()
 
-// Open a new connection, using the GET request on the URL endpoint
 request.open('GET', 'https://api.github.com/users/trandau2k2/repos', true)
 
 request.onload = function () {
-    // Begin accessing JSON data here
-    var data = JSON.parse(this.response);
+    let data = JSON.parse(this.response);
 
-    var statusHTML = '';
+    let statusHTML = '';
     $.each(data, function (i, status) {
         statusHTML += '<tr>';
         statusHTML += '<td>' + status.id + '</td>';
@@ -21,5 +18,4 @@ request.onload = function () {
     $('tbody').html(statusHTML);
 }
 
-// Send request
 request.send();
